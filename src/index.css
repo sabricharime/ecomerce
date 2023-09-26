@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(38,38,38);
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.app {
+  @apply  min-w-full   flex flex-col gap-3 justify-between min-h-screen ;
+}
+
+.dark {
+  @apply bg-neutral-900 text-neutral-200;
+}
+.light {
+  @apply bg-neutral-100 text-neutral-900;
+}
+
+.nav{
+  @apply flex items-center min-h-[70px] w-full justify-between
+}
+
+.items{
+  @apply border border-neutral-900 rounded-md
+}
+
+.span{
+  @apply bg-stone-600 py-1 px-1 capitalize cursor-pointer rounded-sm
+}
