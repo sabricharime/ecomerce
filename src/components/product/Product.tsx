@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import  { useCallback } from 'react'
 import { AiTwotoneStar } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { addTocart } from '../../redux/cartSlice'
@@ -22,10 +22,9 @@ const Product = ({
   category: string
 }) => {
   const dispatch = useDispatch()
-  const addItemToCart = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const addItemToCart = useCallback(() => {
     dispatch(addTocart({ id, title, price, description, category, image, rating }))
   }, [])
-
 
   return (
     <div className=' flex flex-col transition-all duration-200 min-w-[300px] min-h-[290px] bg-neutral-800 rounded-sm overflow-hidden'>
@@ -39,16 +38,44 @@ const Product = ({
             <p>{description.length > 50 ? description.substring(0, 50) + ' ...' : description}</p>
           </div>
           <div className='rat flex self-end '>
-            <p>{rating.rate > 1 && ['*'].map((item, idx) => <AiTwotoneStar key={idx}  />)}</p>
-            <p>{rating.rate > 2 && ['*'].map((item, idx) => <AiTwotoneStar key={idx}  />)}</p>
-            <p>{rating.rate > 3 && ['*'].map((item, idx) => <AiTwotoneStar key={idx}  />)}</p>
-            <p>{rating.rate > 4 && ['*'].map((item, idx) => <AiTwotoneStar key={idx}  />)}</p>
+            <p>
+              {rating.rate > 1 &&
+                ['*'].map((item, idx) => (
+                  <span className={item}>
+                    <AiTwotoneStar key={idx} />
+                  </span>
+                ))}
+            </p>
+            <p>
+              {rating.rate > 2 &&
+                ['*'].map((item, idx) => (
+                  <span className={item}>
+                    <AiTwotoneStar key={idx} />
+                  </span>
+                ))}
+            </p>
+            <p>
+              {rating.rate > 3 &&
+                ['*'].map((item, idx) => (
+                  <span className={item}>
+                    <AiTwotoneStar key={idx} />
+                  </span>
+                ))}
+            </p>
+            <p>
+              {rating.rate > 4 &&
+                ['*'].map((item, idx) => (
+                  <span className={item}>
+                    <AiTwotoneStar key={idx} />
+                  </span>
+                ))}
+            </p>
           </div>
         </div>
 
         <div className='price flex min-h-[40px] items-center justify-between my-5'>
           <p>${price}</p>
-          <button onClick={(e) => addItemToCart(e)} className='bg-stone-950 py-1 px-3 rounded-xl font-medium '>
+          <button onClick={() => addItemToCart()} className='bg-stone-950 py-1 px-3 rounded-xl font-medium '>
             {' '}
             ADD TO CART{' '}
           </button>

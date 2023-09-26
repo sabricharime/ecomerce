@@ -17,13 +17,13 @@ type Data = {
 const CartProduct = ({ id, title, image, description, amount, price }: React.ComponentProps<'div'> & Data) => {
   const dispatch = useDispatch()
 
-  const increaseHandler = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const increaseHandler = React.useCallback(() => {
     dispatch(increaseAmount(id))
   }, [id])
-  const decreaseHandler = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const decreaseHandler = React.useCallback(() => {
     dispatch(decreaseAmount(id))
   }, [id])
-  const remove = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+  const remove = React.useCallback(() => {
     dispatch(removeItem(id))
   }, [id])
 
@@ -40,9 +40,9 @@ const CartProduct = ({ id, title, image, description, amount, price }: React.Com
         </div>
 
         <div className='quantity min-w-[100px] flex justify-between items-center'>
-          <button onClick={(e)=> decreaseHandler(e)}  className='font-bold text-lg'>-</button>
+          <button onClick={()=> decreaseHandler()}  className='font-bold text-lg'>-</button>
           {amount}
-          <button onClick={(e)=> increaseHandler(e)} className='font-bold text-lg'>+</button>
+          <button onClick={()=> increaseHandler()} className='font-bold text-lg'>+</button>
         </div>
 
         <div className='price min-w-[100px]'>
@@ -50,7 +50,7 @@ const CartProduct = ({ id, title, image, description, amount, price }: React.Com
         </div>
 
         <div className="remove">
-         <button onClick={(e)=> remove(e)} className='text-red-700 capitalize font-bold'>remove</button>
+         <button onClick={()=> remove()} className='text-red-700 capitalize font-bold'>remove</button>
         </div>
       </div>
     </div>

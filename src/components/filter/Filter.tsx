@@ -1,5 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react'
-import useFetchData from '../../hooks/useFetchData'
+import React, { ChangeEvent, useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { filterByInput, filterByCategory, filterByrange, filterTodefault } from '../../redux/dataSlice'
@@ -18,7 +17,7 @@ const Filter = () => {
   )
 
   const categoryFilter = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>, item: string) => {
+    ( item: string) => {
       dispatch(filterByCategory(item))
     },
     [filterByCategory]
@@ -34,7 +33,7 @@ const Filter = () => {
     [filterByrange, priceFilter]
   )
 
-  const defaultValues = useCallback((e:React.MouseEvent<HTMLButtonElement>)=>{
+  const defaultValues = useCallback(()=>{
 
     dispatch(filterTodefault())
   },[])
@@ -42,7 +41,7 @@ const Filter = () => {
     <div className='filters h-[450px]   bg-stone-800 rounded-md py-6 px-3 w-full max-h-[500px]'>
       <div className='flex  w-full justify-between px-3 font-medium'>
         <h1>Filters</h1>
-        <button onClick={(e)=> defaultValues(e)}>Clear</button>
+        <button onClick={()=> defaultValues()}>Clear</button>
       </div>
 
       <div className='flex w-full'>
@@ -56,7 +55,7 @@ const Filter = () => {
 
         <div className='grid grid-cols-1  gap-1 '>
           {data.category.map((item, key) => (
-            <div key={key} className='span' onClick={(e) => categoryFilter(e, item)}>
+            <div key={key} className='span' onClick={() => categoryFilter( item)}>
               {' '}
               {item}{' '}
             </div>

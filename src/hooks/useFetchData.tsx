@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { getData } from '../redux/dataSlice'
-import { useSelector, useDispatch } from 'react-redux/es/exports'
+import {  useDispatch } from 'react-redux/es/exports'
 
 export type Data = {
   id: number
